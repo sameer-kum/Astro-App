@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".reading.HorosReadingFragment">
+    tools:context=".language.ChooseLanguageFragment">
 
     <TextView
         android:id="@+id/tvhead"
@@ -19,52 +17,58 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <!-- Two Column Language Selection -->
+    <!-- RadioGroup to ensure only one language can be chosen -->
     <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/languageGroup"
+        android:id="@+id/radioGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:paddingHorizontal="0dp"
         app:columnCount="2"
+        app:rowCount="2"
+        app:layout_constraintBottom_toTopOf="@+id/btnNext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvhead"
-        app:rowCount="2">
+        app:layout_constraintTop_toBottomOf="@id/tvhead">
 
-        <RadioButton
-            android:id="@+id/rb_english"
+        <!-- RadioGroup added to group the radio buttons -->
+        <RadioGroup
+            android:id="@+id/languageGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="English"
-            android:textSize="18sp" />
+            >
 
-        <RadioButton
-            android:id="@+id/rb_hindi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Hindi"
-            android:textSize="18sp" />
+            <RadioButton
+                android:id="@+id/rb_english"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="English"
+                android:textSize="18sp" />
 
-        <RadioButton
-            android:id="@+id/rb_french"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="French"
-            android:textSize="18sp" />
+            <RadioButton
+                android:id="@+id/rb_hindi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Hindi"
+                android:textSize="18sp" />
 
-        <RadioButton
-            android:id="@+id/rb_spanish"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Spanish"
-            android:textSize="18sp" />
+            <RadioButton
+                android:id="@+id/rb_french"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="French"
+                android:textSize="18sp" />
 
+            <RadioButton
+                android:id="@+id/rb_spanish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Spanish"
+                android:textSize="18sp" />
+
+        </RadioGroup>
     </androidx.gridlayout.widget.GridLayout>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -79,7 +83,6 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/languageGroup"
+        app:layout_constraintTop_toBottomOf="@+id/radioGrid"
         tools:layout_editor_absoluteX="15dp" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

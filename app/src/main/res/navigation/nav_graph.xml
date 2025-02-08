@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/dashboardFragment">
+    app:startDestination="@id/startFragment">
 
     <fragment
-        android:id="@+id/dashboardFragment"
-        android:name="com.example.astros.dashboard.DashboardFragment"
-        android:label="DashboardFragment"
-        tools:layout="@layout/fragment_dashboard">
+        android:id="@+id/startFragment"
+        android:name="com.example.astros.start.StartFragment"
+        android:label="StartFragment"
+        tools:layout="@layout/fragment_start">
 
         <action
-            android:id="@+id/action_dashboardFragment_to_horosFragment"
-            app:destination="@id/horosReadingFragment"/>
+            android:id="@+id/action_startFragment_to_horosFragment"
+            app:destination="@id/horosReadingFragment" />
     </fragment>
 
     <fragment
@@ -32,7 +31,7 @@
         android:id="@+id/tarotReadingFragment"
         android:name="com.example.astros.reading.TarotReadingFragment"
         android:label="TarotFragment"
-        tools:layout="@layout/fragment_tarot_reading" >
+        tools:layout="@layout/fragment_tarot_reading">
         <action
             android:id="@+id/action_tarotFragment_to_numerologyFragment"
             app:destination="@id/numerologyReadingFragment" />
@@ -42,22 +41,92 @@
         android:id="@+id/numerologyReadingFragment"
         android:name="com.example.astros.reading.NumerologyReadingFragment"
         android:label="TarotFragment"
-        tools:layout="@layout/fragment_tarot_reading" >
+        tools:layout="@layout/fragment_numerology_reading">
 
         <action
-            android:id="@+id/action_numerologyFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_numerologyFragment_to_chooseLanguageFragment"
+            app:destination="@id/chooseLanguageFragment" />
 
+    </fragment>
+
+    <fragment
+        android:id="@+id/chooseLanguageFragment"
+        android:name="com.example.astros.language.ChooseLanguageFragment"
+        android:label="ChooseLanguageFragment"
+        tools:layout="@layout/fragment_choose_language">
+
+        <action
+            android:id="@+id/action_chooseLanguageFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.astros.login.LoginFragment"
         android:label="LoginFragment"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/action_loginFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+
+        <action
+            android:id="@+id/action_loginFragment_to_forgetPasswordFragment"
+            app:destination="@id/forgetPasswordFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.example.astros.signup.SignupFragment"
+        android:label="SignupFragment"
+        tools:layout="@layout/fragment_signup">
+
+        <action
+            android:id="@+id/action_signupFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+
+        <action
+            android:id="@+id/action_signupFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="com.example.astros.forgetpassword.ForgetPasswordFragment"
+        android:label="ForgetPasswordFragment"
+        tools:layout="@layout/fragment_forget_password">
+
+        <action
+            android:id="@+id/action_forgetPasswordFragment_to_otpFragment"
+            app:destination="@id/otpFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/otpFragment"
+        android:name="com.example.astros.otp.OtpFragment"
+        android:label="OtpFragment"
+        tools:layout="@layout/fragment_otp">
+
+        <action
+            android:id="@+id/action_otpFragment_to_resetPasswordFragment"
+            app:destination="@id/resetPasswordFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/resetPasswordFragment"
+        android:name="com.example.astros.resetpassword.ResetPasswordFragment"
+        android:label="ResetPasswordFragment"
+        tools:layout="@layout/fragment_reset_password">
 
 <!--        <action-->
-<!--            android:id="@+id/action_loginFragment_to_dashboardFragment"-->
-<!--            app:destination="@id/dashboardFragment" />-->
+<!--            android:id="@+id/action_resetPasswordFragment_to_loginFragment"-->
+<!--            app:destination="@id/loginFragment" />-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.astros.dashboard.DashboardFragment"
+        android:label="DashboardFragment"
+        tools:layout="@layout/fragment_dashboard">
     </fragment>
 </navigation>

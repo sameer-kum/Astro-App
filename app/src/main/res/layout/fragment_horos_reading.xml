@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".reading.HorosReadingFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+     <TextView
         android:id="@+id/tvhead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +27,7 @@
         android:textAlignment="center"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnNext"
+        app:layout_constraintBottom_toTopOf="@+id/llstar"
         app:layout_constraintEnd_toEndOf="parent"
          app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvhead"
@@ -83,6 +82,6 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvsubhead" />
+        app:layout_constraintTop_toBottomOf="@+id/llstar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

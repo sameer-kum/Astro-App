@@ -1,4 +1,4 @@
-package com.example.astros.login
+package com.example.astros.otp
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.astros.R
-import com.example.astros.databinding.FragmentLoginBinding
+import com.example.astros.databinding.FragmentOtpBinding
 
 
-class LoginFragment : Fragment() {
+class OtpFragment : Fragment() {
 
-    private lateinit var binding: FragmentLoginBinding
+    private lateinit var binding: FragmentOtpBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,21 +24,18 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentLoginBinding.inflate(inflater, container, false)
+        binding = FragmentOtpBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvRegister.setOnClickListener {
-            // Navigate to SignupFragment
-            findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
+        binding.btnVerify.setOnClickListener {
+            // Navigate to ResetPasswordFragment
+            findNavController().navigate(R.id.action_otpFragment_to_resetPasswordFragment)
         }
 
-        binding.tvForgetPassword.setOnClickListener {
-            // Navigate to ForgetPasswordFragment
-            findNavController().navigate(R.id.action_loginFragment_to_forgetPasswordFragment)
-        }
     }
- }
+
+}

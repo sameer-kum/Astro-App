@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "876480886857",
+    "project_id": "astros-67028",
+    "storage_bucket": "astros-67028.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876480886857:android:e8cd04f5707286dbcd2798",
+        "android_client_info": {
+          "package_name": "com.example.astros"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-gaklmJ-y35T_5UXPampidO6W21QihWE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
