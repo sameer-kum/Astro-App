@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.navigation.fragment.findNavController
 import com.example.astros.R
 import com.example.astros.databinding.FragmentTarotReadingBinding
+import com.example.astros.utils.NavigationUtils
 
 class TarotReadingFragment : Fragment() {
 
@@ -29,8 +31,12 @@ class TarotReadingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.btnNext.setOnClickListener {
-            findNavController().navigate(R.id.action_tarotFragment_to_numerologyFragment)
+            NavigationUtils.navigateWithAnimation(
+                findNavController(),
+                R.id.action_tarotFragment_to_numerologyFragment
+            )
         }
 
     }

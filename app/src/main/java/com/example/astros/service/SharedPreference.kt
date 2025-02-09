@@ -27,56 +27,64 @@ class SharedPreference(context: Context) {
         return sharedPreferences.getString("user_name", "Default Name") ?: "Default Name"
     }
 
-    fun saveEmail(name: String) {
-        sharedPreferences.edit().putString("user_email", name).apply()
+    fun savePhoneNo(phoneNo: String) {
+        sharedPreferences.edit().putString("user_phone_no", phoneNo).apply()
+    }
+
+    fun getPhoneNo(): String {
+        return sharedPreferences.getString("user_phone_no", "Default Name") ?: "Default Name"
+    }
+
+    fun saveEmail(email: String) {
+        sharedPreferences.edit().putString("user_email", email).apply()
     }
 
     fun getEmail(): String {
         return sharedPreferences.getString("user_email", "Not found") ?: "Not found"
     }
 
-    fun savePassword(name: String) {
-        sharedPreferences.edit().putString("user_password", name).apply()
+    fun savePassword(pwd: String) {
+        sharedPreferences.edit().putString("user_password", pwd).apply()
     }
 
     fun getPassword(): String {
         return sharedPreferences.getString("user_password", "Not found") ?: "Not found"
     }
 
-    fun saveGender(name: String) {
-        sharedPreferences.edit().putString("user_gender", name).apply()
+    fun saveGender(gender: String) {
+        sharedPreferences.edit().putString("user_gender", gender).apply()
     }
 
     fun getGender(): String {
         return sharedPreferences.getString("user_gender", "Not found") ?: "Not found"
     }
 
-    fun saveMaritalStatus(name: String) {
-        sharedPreferences.edit().putString("user_marital_status", name).apply()
+    fun saveMaritalStatus(maritalStatus: String) {
+        sharedPreferences.edit().putString("user_marital_status", maritalStatus).apply()
     }
 
     fun getMaritalStatus(): String {
         return sharedPreferences.getString("user_marital_status", "Not found") ?: "Not found"
     }
 
-    fun saveDOB(name: String) {
-        sharedPreferences.edit().putString("user_DOB", name).apply()
+    fun saveDOB(DOB: String) {
+        sharedPreferences.edit().putString("user_DOB", DOB).apply()
     }
 
     fun getDOB(): String {
         return sharedPreferences.getString("user_DOB", "Not found") ?: "Not found"
     }
 
-    fun saveBirthTime(name: String) {
-        sharedPreferences.edit().putString("user_Time_of_birth", name).apply()
+    fun saveBirthTime(time: String) {
+        sharedPreferences.edit().putString("user_Time_of_birth", time).apply()
     }
 
     fun getBirthTime(): String {
         return sharedPreferences.getString("user_Time_of_birth", "Not found") ?: "Not found"
     }
 
-    fun saveBirthPlace(name: String) {
-        sharedPreferences.edit().putString("user_Place_of_birth", name).apply()
+    fun saveBirthPlace(place: String) {
+        sharedPreferences.edit().putString("user_Place_of_birth", place).apply()
     }
 
     fun getBirthPlace(): String {

@@ -4,11 +4,14 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
 import android.widget.TextView
+import com.example.astros.service.SharedPreference
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
 object GeneralUtil {
+
+    private lateinit var sharedPreference: SharedPreference
 
     // Function to open Date Picker
     fun openDatePicker(context: Context, textView: TextView) {
@@ -20,6 +23,8 @@ object GeneralUtil {
                 selectedDate.set(year, month, dayOfMonth)
                 val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
                 textView.text = dateFormat.format(selectedDate.time)
+                sharedPreference.saveDOB(dateFormat.format(selectedDate.time))
+
             },
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),

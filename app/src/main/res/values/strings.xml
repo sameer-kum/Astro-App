@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Astros</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="register_text">New to Astrovate? <font color='#FF5722'>Register</font></string>
-    <string name="condition_text"> By signing up, you\'re agree to our <font color='#000000'><b>Terms &amp; Conditions</b></font> and<font color='#000000'> <b>Privacy Policy</b></font> </string>
+    <string name="register_text">New to Astros? <font color='#FF5722'>Register</font></string>
+    <string name="join_us_text">Join us before? <font color='#FF5722'>Login</font></string>
+    <string name="condition_text">By signing up, you\'re agree to our <font color='#000000'><b>Terms &amp; Conditions</b></font> and<font color='#000000'> <b>Privacy Policy</b></font> </string>
 </resources>

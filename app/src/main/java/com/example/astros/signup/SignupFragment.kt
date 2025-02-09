@@ -9,16 +9,19 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.PopupMenu
 import android.widget.Toast
-import androidx.compose.material3.DatePickerDialog
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import com.example.astros.R
 import com.example.astros.databinding.FragmentSignupBinding
 import com.example.astros.service.SharedPreference
 import com.example.astros.utils.GeneralUtil
+import com.example.astros.utils.NavigationUtils
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -29,6 +32,7 @@ class SignupFragment : Fragment() {
     private lateinit var auth: FirebaseAuth  // Firebase Auth instance
     private lateinit var sharedPreference: SharedPreference
     private var name: String? = ""
+    private var phoneNo: String = ""
     private var email: String = ""
     private var password: String = ""
     private var placeOfBirth: String = ""
@@ -44,7 +48,7 @@ class SignupFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-         binding = FragmentSignupBinding.inflate(inflater, container, false)
+        binding = FragmentSignupBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -55,6 +59,13 @@ class SignupFragment : Fragment() {
             afterTextChanged = {
                 name = binding.etName.text.toString()
                 sharedPreference.saveName(name!!)
+            }
+        )
+
+        binding.etPhoneNo.addTextChangedListener(
+            afterTextChanged = {
+                phoneNo = binding.etPhoneNo.text.toString()
+                sharedPreference.savePhoneNo(phoneNo)
             }
         )
 
@@ -81,7 +92,8 @@ class SignupFragment : Fragment() {
         }
 
         binding.llDOB.setOnClickListener {
-            openDatePicker()
+            GeneralUtil.openDatePicker(requireContext(), binding.tvDOB)
+//            openDatePicker()
         }
 
         binding.llTime.setOnClickListener {
@@ -107,7 +119,10 @@ class SignupFragment : Fragment() {
         }
 
         binding.tvjoinus.setOnClickListener {
-             findNavController().navigate(R.id.action_signupFragment_to_loginFragment)
+            NavigationUtils.navigateWithAnimation(
+                findNavController(),
+                R.id.action_signupFragment_to_loginFragment
+            )
         }
 
     }
@@ -182,10 +197,32 @@ class SignupFragment : Fragment() {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(requireContext(), "Signup Successful!", Toast.LENGTH_SHORT)
-                        .show()
-                    // Navigate to next screen or home screen
-                    findNavController().navigate(R.id.action_signupFragment_to_dashboardFragment)
+                    val user = auth.currentUser
+                    val profileUpdates = UserProfileChangeRequest.Builder()
+                        .setDisplayName(name)  // Set the display name
+                        .build()
+
+                    user?.updateProfile(profileUpdates)?.addOnCompleteListener { profileTask ->
+                        if (profileTask.isSuccessful) {
+                            user.reload().addOnCompleteListener {  // Refresh user data
+                                val updatedUser = auth.currentUser
+                                Log.d("SignUp", "Updated Display Name: ${updatedUser?.displayName}")
+
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Signup Successful!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                NavigationUtils.navigateWithAnimation(findNavController(), R.id.action_signupFragment_to_dashboardFragment)
+                            }
+                        } else {
+                            Toast.makeText(
+                                requireContext(),
+                                "Profile Update Failed!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
                 } else {
                     Toast.makeText(
                         requireContext(),

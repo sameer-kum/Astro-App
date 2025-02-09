@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.navigation.fragment.findNavController
 import com.example.astros.R
 import com.example.astros.databinding.FragmentNumerologyReadingBinding
+import com.example.astros.utils.NavigationUtils
 
 
 class NumerologyReadingFragment : Fragment() {
@@ -28,8 +30,9 @@ class NumerologyReadingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.btnNext.setOnClickListener {
-            findNavController().navigate(R.id.action_numerologyFragment_to_chooseLanguageFragment)
+            NavigationUtils.navigateWithAnimation(findNavController(), R.id.action_numerologyFragment_to_chooseLanguageFragment)
         }
 
 
