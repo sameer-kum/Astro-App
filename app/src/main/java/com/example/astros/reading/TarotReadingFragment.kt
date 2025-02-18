@@ -8,16 +8,16 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.navigation.fragment.findNavController
 import com.example.astros.R
+import com.example.astros.base.BaseFragment
 import com.example.astros.databinding.FragmentTarotReadingBinding
 import com.example.astros.utils.NavigationUtils
 
-class TarotReadingFragment : Fragment() {
+class TarotReadingFragment : BaseFragment() {
 
     private lateinit var binding: FragmentTarotReadingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -33,10 +33,7 @@ class TarotReadingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnNext.setOnClickListener {
-            NavigationUtils.navigateWithAnimation(
-                findNavController(),
-                R.id.action_tarotFragment_to_numerologyFragment
-            )
+            NavigationUtils.navigateWithAnimation(findNavController(), R.id.action_tarotFragment_to_numerologyFragment)
         }
 
     }

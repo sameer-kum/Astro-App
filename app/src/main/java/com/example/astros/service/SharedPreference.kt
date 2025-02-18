@@ -2,6 +2,8 @@ package com.example.astros.service
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.net.Uri
+import java.io.File
 
 class SharedPreference(context: Context) {
 
@@ -25,6 +27,14 @@ class SharedPreference(context: Context) {
 
     fun getName(): String {
         return sharedPreferences.getString("user_name", "Default Name") ?: "Default Name"
+    }
+
+    fun saveUserName(userName: String) {
+        sharedPreferences.edit().putString("user_userName", userName).apply()
+    }
+
+    fun getUserName(): String {
+        return sharedPreferences.getString("user_userName", "Default Name") ?: "Default Name"
     }
 
     fun savePhoneNo(phoneNo: String) {
@@ -90,5 +100,46 @@ class SharedPreference(context: Context) {
     fun getBirthPlace(): String {
         return sharedPreferences.getString("user_Place_of_birth", "Not found") ?: "Not found"
     }
+
+    fun saveProfileImage(imagePath: String) {
+        sharedPreferences.edit().putString("user_profile_image", imagePath).apply()
+    }
+
+    fun loadProfileImage(): String? {
+        return sharedPreferences.getString("user_profile_image", null)
+    }
+
+    fun saveToken(token: String) {
+        sharedPreferences.edit().putString("user_token", token).apply()
+    }
+
+    fun getToken(): String? {
+        return sharedPreferences.getString("user_token", null)
+    }
+
+    fun clearToken() {
+        sharedPreferences.edit().remove("user_token").apply()
+    }
+
+    fun saveLoginStatus(isLoggedIn: Boolean) {
+        sharedPreferences.edit().putBoolean("isLoggedIn", isLoggedIn).apply()
+    }
+
+    fun isUserLoggedIn(): Boolean {
+        return sharedPreferences.getBoolean("isLoggedIn", false)
+    }
+
+
+
+    // ✅ **Load Profile Image from Storage**
+//    fun loadProfileImage(): Uri? {
+//        val imagePath = sharedPreferences.getString("user_profile_image", null)
+//        return if (imagePath != null && imagePath.length > 0) {
+//            val file = File(imagePath)
+//            if (file.exists()) Uri.fromFile(file) else null
+//        } else {
+//            null
+//        }
+//    }
 
 }

@@ -10,11 +10,13 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import com.example.astros.R
+import com.example.astros.base.BaseFragment
 import com.example.astros.databinding.FragmentForgetPasswordBinding
+import com.example.astros.utils.GeneralUtil
 import com.example.astros.utils.NavigationUtils
 import com.google.firebase.auth.FirebaseAuth
 
-class ForgetPasswordFragment : Fragment() {
+class ForgetPasswordFragment : BaseFragment() {
 
     private lateinit var binding: FragmentForgetPasswordBinding
     private lateinit var auth: FirebaseAuth
@@ -44,16 +46,15 @@ class ForgetPasswordFragment : Fragment() {
         binding.btnSubmit.setOnClickListener {
 
             if (inputText.isEmpty()) {
-                Toast.makeText(requireContext(), "Please enter Email or Phone", Toast.LENGTH_SHORT)
-                    .show()
+                GeneralUtil.showToast(requireContext(), "Please enter Email or Phone")
                 return@setOnClickListener
             }
             if (isEmail(inputText)) {
                 resetPassword(inputText)
             } else {
-                Toast.makeText(
-                    requireContext(), "Invalid email or phone number", Toast.LENGTH_SHORT
-                ).show()
+                GeneralUtil.showToast(
+                    requireContext(), "Invalid email or phone number"
+                )
             }
         }
 
@@ -67,10 +68,10 @@ class ForgetPasswordFragment : Fragment() {
     private fun resetPassword(email: String) {
         auth.sendPasswordResetEmail(email).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(requireContext(), "Reset link sent to your email", Toast.LENGTH_LONG).show()
+                    GeneralUtil.showToast(requireContext(), "Reset link sent to your email")
                     NavigationUtils.navigateWithAnimation(findNavController(), R.id.action_forgetPasswordFragment_to_loginFragment)
                  } else {
-                    Toast.makeText(requireContext(), "Error: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                    GeneralUtil.showToast(requireContext(), "Error: ${task.exception?.message}")
                 }
         }
     }

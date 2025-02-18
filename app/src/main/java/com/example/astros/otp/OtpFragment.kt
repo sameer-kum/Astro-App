@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.astros.R
 import com.example.astros.databinding.FragmentOtpBinding
+import com.example.astros.utils.GeneralUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthProvider
 
@@ -45,7 +46,7 @@ class OtpFragment : Fragment() {
             if (otp.length == 6) {
                 verifyOtp(otp)
             } else {
-                Toast.makeText(requireContext(), "Please enter a valid OTP", Toast.LENGTH_SHORT).show()
+                GeneralUtil.showToast(requireContext(), "Please enter a valid OTP")
             }
             findNavController().navigate(R.id.action_otpFragment_to_resetPasswordFragment)
         }
@@ -67,7 +68,7 @@ class OtpFragment : Fragment() {
                     // OTP is correct, navigate to ResetPasswordFragment
                     findNavController().navigate(R.id.action_otpFragment_to_resetPasswordFragment)
                 } else {
-                    Toast.makeText(requireContext(), "Invalid OTP", Toast.LENGTH_SHORT).show()
+                    GeneralUtil.showToast(requireContext(), "Invalid OTP")
                 }
             }
     }

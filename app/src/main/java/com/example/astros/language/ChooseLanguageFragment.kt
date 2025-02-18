@@ -10,11 +10,13 @@ import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.astros.R
+import com.example.astros.base.BaseFragment
 import com.example.astros.databinding.FragmentChooseLanguageBinding
 import com.example.astros.service.SharedPreference
+import com.example.astros.utils.GeneralUtil
 import com.example.astros.utils.NavigationUtils
 
-class ChooseLanguageFragment : Fragment() {
+class ChooseLanguageFragment : BaseFragment() {
 
     private lateinit var binding: FragmentChooseLanguageBinding
     private lateinit var sharedPreference: SharedPreference
@@ -22,7 +24,6 @@ class ChooseLanguageFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPreference = SharedPreference(requireContext())
-
     }
 
     override fun onCreateView(
@@ -53,7 +54,7 @@ class ChooseLanguageFragment : Fragment() {
                 sharedPreference.saveSelectedLanguage(selectedLanguage)
                 NavigationUtils.navigateWithAnimation(findNavController(), R.id.action_chooseLanguageFragment_to_loginFragment)
              } else {
-                Toast.makeText(requireContext(), "Please choose a language first!", Toast.LENGTH_SHORT).show()
+                GeneralUtil.showToast(requireContext(), "Please choose a language first!")
             }
         }
     }

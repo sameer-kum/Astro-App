@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.navigation.fragment.findNavController
 import com.example.astros.R
+import com.example.astros.base.BaseFragment
 import com.example.astros.databinding.FragmentHorosReadingBinding
 import com.example.astros.utils.NavigationUtils
 
 
-class HorosReadingFragment : Fragment() {
+class HorosReadingFragment : BaseFragment() {
 
     private lateinit var binding: FragmentHorosReadingBinding
 

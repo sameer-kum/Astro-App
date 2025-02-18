@@ -9,10 +9,12 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import com.example.astros.R
+import com.example.astros.base.BaseFragment
 import com.example.astros.databinding.FragmentResetPasswordBinding
+import com.example.astros.utils.GeneralUtil
 import com.google.firebase.auth.FirebaseAuth
 
-class ResetPasswordFragment : Fragment() {
+class ResetPasswordFragment : BaseFragment() {
 
     private lateinit var binding: FragmentResetPasswordBinding
     private var newPassword: String = ""
@@ -59,12 +61,12 @@ class ResetPasswordFragment : Fragment() {
         binding.btnSubmit.setOnClickListener {
             // Navigate to LoginFragment
             if (newPassword.isEmpty() || confirmPassword.isEmpty()) {
-                Toast.makeText(requireContext(), "Please enter all fields", Toast.LENGTH_SHORT).show()
+                GeneralUtil.showToast(requireContext(), "Please enter all fields")
                 return@setOnClickListener
             }
 
             if (newPassword != confirmPassword) {
-                Toast.makeText(requireContext(), "Passwords do not match", Toast.LENGTH_SHORT).show()
+                GeneralUtil.showToast(requireContext(), "Passwords do not match")
                 return@setOnClickListener
             }
 

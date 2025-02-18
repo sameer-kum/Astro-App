@@ -8,10 +8,11 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.navigation.fragment.findNavController
 import com.example.astros.R
+import com.example.astros.base.BaseFragment
 import com.example.astros.databinding.FragmentStartBinding
 import com.example.astros.utils.NavigationUtils
 
-class StartFragment : Fragment() {
+class StartFragment : BaseFragment() {
 
     private lateinit var binding: FragmentStartBinding
 
